@@ -1,10 +1,15 @@
+<% local ban = require("utils.banner").get(sboard) %>
+<% if not ban then %>
 <a href=".."><div class="title"><%= boardinfo[sboard].name -%></div></a>
-<%= boardinfo[sboard].desc -%><br><br>
-<a href="new">New Post</a><br><br>
+<%= require("utils").randomstring(boardinfo[sboard].desc) -%><br><br>
+<% else %>
+<img src="<%=ban-%>" /><br>
+<% end %>
+<a href="/<%= sboard -%>/new">New Post</a><br><br>
 <% if #threads == 0 then %>
 	Empty directory.
 <% else %>
 	<% for i=1, #threads do local thread = threads[i] %>
-		<a href="/<%= board -%>/<%= string.format("%x", thread.id) -%>"><%= thread.name -%></a>
+		<a href="/<%= sboard -%>/<%= thread.id -%>"><%= thread.name -%></a><br>
 	<% end %>
 <% end %>

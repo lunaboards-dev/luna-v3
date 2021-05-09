@@ -1,0 +1,25 @@
+<% if thread then %>
+<form method="post" enctype="multipart/form-data" action="/<%=sboard-%>/<%=sthreadid-%>">
+	<label for="trip">trip</label><br>
+	<input type="text" name="trip" /><br>
+	<br>
+	<textarea name="body"></textarea><br><br>
+	<input type="file" name="file"><br><br>
+	<input type="submit" value="Submit">
+	<input type="hidden" value="<%= sboard -%>" name="board">
+</form>
+<% elseif sboard then %>
+<form method="post" enctype="multipart/form-data" action="/<%=sboard-%>/new">
+	<label for="title">title</label><br>
+	<input type="text" name="title" /><br>
+	<label for="trip">trip</label><br>
+	<input type="text" name="trip" /><br>
+	<br>
+	<textarea name="body"></textarea><br><br>
+	<input type="file" name="file"><br><br>
+	<input type="submit" value="Submit">
+	<input type="hidden" value="<%= sboard -%>" name="board">
+</form>
+<% else %>
+	hi :)
+<% end %>

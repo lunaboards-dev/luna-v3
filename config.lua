@@ -8,13 +8,18 @@ config({"development", "production"}, {
 		host = cfg.database.host,
 		user = cfg.database.user,
 		password = cfg.database.password,
-		database = cfg.database.database
+		database = cfg.database.database,
+		port = cfg.database.port
 	}
+})
+
+config("production", {
+	code_cache = "on"
 })
 
 --[[
 	SELECT EXISTS (
-   SELECT FROM information_schema.tables 
+   SELECT FROM information_schema.tables
    WHERE  table_schema = 'schema_name'
    AND    table_name   = 'table_name'
    );
@@ -22,5 +27,6 @@ config({"development", "production"}, {
 
 --[[local db = require("lapis.db")
 if (not db.query("select exists (select from information_schema.tables where table_schema = ? and table_name = ?)", cfg.database.database, "engine-info").exists) then
-	require("dbsetup")
+	coroutine.yield()
+	dofile("dbsetup")
 end]]

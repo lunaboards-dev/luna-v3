@@ -10,10 +10,10 @@
 		<span id="<%= board %>-threads" style="display:none"></span>
 	<% elseif sboard == board then %>
 		<div class="threads">
-			<% for j, threadid in ipairs(threads) do %>
+			<% for j=1, #threads do local thread=threads[j] %>
 				<% local tlistc = "├" if j == #threads then tlistc = "└" end %>
-				&nbsp;&nbsp;<%= tlistc -%>─<a href="/<%= board -%>/<%= util.threadid_to_url(threadid) -%>" class="sidebar-thread <% if sthreadid == threadid then %> selected<% end %>"><%= api.get_thread(threadid).id -%></a><br>
-			<% end %>
+				│&nbsp;<%= tlistc -%>─<a href="/<%= board -%>/<%= thread.id -%>" class="sidebar-thread <% if sthreadid == thread.id then %> selected<% end %>"> <%= thread.name -%></a><br>
+			<% if (i == 20) then break end end %>
 		</div>
 	<% end %>
 <% end %>

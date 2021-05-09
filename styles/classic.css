@@ -23,3 +23,8 @@ a:visited {
 	color: $0 !important; /* fuck off css */
 	background-color: $7;
 }
+
+input, textarea {
+	background-color: $7;
+	color: $0;
+}

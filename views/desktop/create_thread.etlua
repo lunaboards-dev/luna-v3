@@ -1,10 +1,14 @@
-<form>
+<a href=".."><div class="title"><%= boardinfo[sboard].name -%></div></a>
+<%= boardinfo[sboard].desc -%><br><br>
+
+<form method="post" enctype="multipart/form-data">
 	<label for="title">title</label><br>
-	<input name="title" /><br>
+	<input type="text" name="title" /><br>
 	<label for="trip">trip</label><br>
-	<input name="trip" /><br>
+	<input type="text" name="trip" /><br>
 	<br>
-	<textarea name="content"></textarea>
-	<input type="file" name="file">
-	<input type="submit" value="Submit">
+	<textarea name="body"></textarea><br>
+	<input type="file" name="file"><br><br>
+	<input type="submit" value="Submit"><br>
+	<input type="hidden" value="<%= sboard -%>" name="board">
 </form>

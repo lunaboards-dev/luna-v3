@@ -24,7 +24,7 @@
 }
 
 .sidebar {
-	width: 15vw;
+	width: 20vw;
 	overflow-x: hidden;
 }
 
@@ -88,4 +88,16 @@ a:hover {
 	font-size: 32px;
 	margin-top: 8px;
 	margin-bottom: 8px;
+}
+
+input, textarea {
+	resize: none;
+	width: 100%;
+	padding:0;
+	margin:0;
+	border-width: 0;
+}
+
+textarea {
+	font-size: 16px;
 }

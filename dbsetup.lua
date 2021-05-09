@@ -6,11 +6,11 @@ local config = require("utils.luna-config")
 local type = schema.types
 local types = schema.types
 
-schema.drop_table("engine-info")
+--[[schema.drop_table("engine-info")
 schema.drop_table("threads")
 schema.drop_table("admins")
 schema.drop_table("adminpriv")
-schema.drop_table("posts")
+schema.drop_table("posts")]]
 
 -- info table
 schema.create_table("engine-info", {
@@ -21,7 +21,7 @@ schema.create_table("engine-info", {
 
 schema.create_table("threads", {
 	{"board", types.text},
-	{"id", "bigint NOT NULL"},
+	{"id", types.text},
 	{"name", types.text},
 	{"ctime", types.time},
 	{"mtime", types.time},
@@ -32,14 +32,14 @@ schema.create_table("threads", {
 
 schema.create_table("posts", {
 	{"board", types.text},
-	{"thread", "bigint NOT NULL"},
+	{"thread", types.text},
 	{"id", types.integer},
 	{"time", types.time},
 	{"trip", types.text},
 	{"admin", "UUID"},
 	{"content", types.text},
-	{"picture", types.text},
-	{"original_pic_name", types.text},
+	{"picture", "text"},
+	{"original_pic_name", "text"},
 	{"ip", types.text}
 })
 
@@ -48,7 +48,8 @@ schema.create_table("admins", {
 	{"name", types.text},
 	{"color", types.text},
 	{"ranktext", types.text},
-	{"flags", types.integer}
+	{"flags", types.integer},
+	{"passhash", types.text}
 })
 
 schema.create_table("adminpriv", {

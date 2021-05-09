@@ -5,4 +5,6 @@ local function loadsubapi(file)
 end
 
 loadsubapi("boards")
+loadsubapi("thread")
+loadsubapi("threads")
 return api
