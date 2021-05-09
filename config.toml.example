@@ -1,4 +1,6 @@
 [luna]
+tripsalt = "changeme"
+secret = "changeme"
 boards = [
 	"l",
 	"u",
@@ -29,7 +31,7 @@ clist = [
 	"#707",
 	"#077",
 	"#bbb", #special exception
-	"#777", 
+	"#777",
 	"#f00",
 	"#0f0",
 	"#ff0",
@@ -47,7 +49,7 @@ clist = [
 
 	[boardinfo.l]
 	name = "Random"
-	desc = "God is dead and we killed him"
+	desc = "Do you think god stays in heaven because he fears what he's created?"
 	webtitle = "wtf is a poland"
 
 	[boardinfo.u]
@@ -69,11 +71,26 @@ clist = [
 	name = "Meta"
 	desc = "Discuss Luna"
 	webtitle = "It's shit."
-	
+
 	[boardinfo.t]
 	name = "Tech and programming"
-	desc = "Killer roombas"
-	webtitle = "Remember when Steve Jobs died?"
+	desc = [
+		"claymore roombas",
+		"killer roombas",
+		"install gentoo",
+		"install arch",
+		"install win2k",
+		"install solaris",
+		"install templeos"
+	]
+	webtitle = [
+		"it's so sad steve jobs died of ligma",
+		"remember when steve jobs died?",
+		"year n+1 will be the year of the linux desktop!",
+		"the african american government agents are bioluminescent",
+		"rust is a shit language, t. lua dev",
+		"absolutely ancient software"
+	]
 
 	[boardinfo.p]
 	name = "Politics"
@@ -90,6 +107,19 @@ clist = [
 	name = "Video Games"
 	desc = "The only place for vijya"
 	webtitle = "bizon ace bizon ace"
+
+	[boardinfo.r]
+	name = "RETRO.BRD"
+	desc = "ENTERING ELECTROSPHERE"
+	webtitle = [
+		"[dial up tones]",
+		"kernel panic!",
+		"out of inodes",
+		"Abort, Retry, Fail?",
+		"æ–‡å—åŒ–ã‘",
+		"NTLDR is missing or corrupt"
+	]
+	thread_validate = "validators/83names.lua"
 
 	[boardinfo.all]
 	name = "All"
