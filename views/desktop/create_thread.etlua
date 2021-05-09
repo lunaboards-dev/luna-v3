@@ -1,0 +1,10 @@
+<form>
+	<label for="title">title</label><br>
+	<input name="title" /><br>
+	<label for="trip">trip</label><br>
+	<input name="trip" /><br>
+	<br>
+	<textarea name="content"></textarea>
+	<input type="file" name="file">
+	<input type="submit" value="Submit">
+</form>

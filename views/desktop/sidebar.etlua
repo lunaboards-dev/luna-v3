@@ -1,0 +1,20 @@
+<a href="/" class="sidebar-board">luna <%= _ENGINE.engine.nice_version %></a><br>
+<% for i=1, #boards do local board = boards[i] %>
+	<% local blistc = "├" if i == #boards then blistc = "└" end %>
+	<% if user.js_enabled then %>
+		<!-- This is all fucky wucky in my highlighting. -->
+		<span onclick="expand(&quot;<%= board -%>&quot;)" class="sidebar-board<% if sboard == board then %> selected<% end %>"><%= blistc -%>─+─</span><% elseif sboard == board then %>
+		<span class="sidebar-board"><%= blistc -%>─┬─</span><% else %>
+		<span class="sidebar-board"><%= blistc -%>─+─</span><% end %><a href="/<%= board -%>/" class="sidebar-board<% if sboard == board then %> selected<% end %>"> <%= boardinfo[board].name -%>&nbsp;</a><br>
+	<% if user.js_enabled then %>
+		<span id="<%= board %>-threads" style="display:none"></span>
+	<% elseif sboard == board then %>
+		<div class="threads">
+			<% for j, threadid in ipairs(threads) do %>
+				<% local tlistc = "├" if j == #threads then tlistc = "└" end %>
+				&nbsp;&nbsp;<%= tlistc -%>─<a href="/<%= board -%>/<%= util.threadid_to_url(threadid) -%>" class="sidebar-thread <% if sthreadid == threadid then %> selected<% end %>"><%= api.get_thread(threadid).id -%></a><br>
+			<% end %>
+		</div>
+	<% end %>
+<% end %>
+<a href="/config/" class="sidebar-board">cfg</span>

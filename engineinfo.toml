@@ -1,0 +1,23 @@
+# for the love of god, never ever change this.
+# this is used to make sure we don't have database schema problems
+[engine]
+engine_version = "lunav3-0-0"
+schema_version = "lunav3-0-0-1620532800"
+nice_version = "v3.0.0"
+
+[engine.version-history]
+
+[engine.version-history.schema]
+
+[engine.version-history.schema.lunav3-0-0-1620532800]
+changelog = [
+	"initial version"
+]
+
+[engine.version-history.engine]
+
+[engine.version-history.engine.lunav3-0-0]
+schema = "lunav3-0-0-1620532800"
+changelog = [
+	"initial v3 version"
+]

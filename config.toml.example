@@ -1,0 +1,97 @@
+[luna]
+boards = [
+	"l",
+	"u",
+	"a",
+	"s",
+	"e",
+	"x",
+	"t",
+	"v",
+	"p",
+	"txt"
+]
+
+[database]
+host = "localhost"
+user = "luna"
+password = "enter pass here"
+database = "luna"
+
+# ANSI 4-bit colors
+[colors]
+clist = [
+	"#000",
+	"#700",
+	"#070",
+	"#770",
+	"#007",
+	"#707",
+	"#077",
+	"#bbb", #special exception
+	"#777", 
+	"#f00",
+	"#0f0",
+	"#ff0",
+	"#00f",
+	"#f0f",
+	"#0ff",
+	"#fff"
+]
+
+[boardinfo]
+	[boardinfo.a]
+	name = "Anime"
+	desc = "Weebshit here"
+	webtitle = "you are already dead"
+
+	[boardinfo.l]
+	name = "Random"
+	desc = "God is dead and we killed him"
+	webtitle = "wtf is a poland"
+
+	[boardinfo.u]
+	name = "Creative"
+	desc = "Not to be confused with danger/u/"
+	webtitle = "Made by u!"
+
+	[boardinfo.s]
+	name = "Memes"
+	desc = "Random and quirky XDD"
+	webtitle = "God is dead and we killed him"
+
+	[boardinfo.e]
+	name = "Porn"
+	desc = "I will literally fucking IP ban people who post CP"
+	webtitle = "no more inflation i swear to god"
+
+	[boardinfo.x]
+	name = "Meta"
+	desc = "Discuss Luna"
+	webtitle = "It's shit."
+	
+	[boardinfo.t]
+	name = "Tech and programming"
+	desc = "Killer roombas"
+	webtitle = "Remember when Steve Jobs died?"
+
+	[boardinfo.p]
+	name = "Politics"
+	desc = "Literally worse than furry porn."
+	webtitle = "Serbia world superpower by 2030"
+
+	[boardinfo.txt]
+	name = "Text"
+	desc = "There is only text"
+	webtitle = "The only place safe from porn."
+	noimg = true
+
+	[boardinfo.v]
+	name = "Video Games"
+	desc = "The only place for vijya"
+	webtitle = "bizon ace bizon ace"
+
+	[boardinfo.all]
+	name = "All"
+	desc = "I can see EVERYTHING"
+	webtitle = "unleash the third eye"

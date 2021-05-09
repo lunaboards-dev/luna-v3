@@ -1,0 +1,27 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build - Development",
+            "type": "shell",
+            "command": "lapis build development"
+        },
+        {
+            "label": "Build - Production",
+            "type": "shell",
+            "command": "lapis build production"
+        },
+        {
+            "label": "Server - Development",
+            "type": "shell",
+            "command": "lapis server development"
+        },
+        {
+            "label": "Server - Production",
+            "type": "shell",
+            "command": "lapis server production"
+        },
+    ]
+}

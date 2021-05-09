@@ -1,0 +1,91 @@
+@font-face {
+	font-family: "Unifont";
+	src: url(/static/unifont.ttf);
+}
+
+* {
+	font-family: 'Unifont';
+	font-size: 16px;
+	font-smooth: never;
+	-webkit-font-smoothing: none;
+	-moz-osx-font-smoothing: none;
+}
+
+#container {
+	width: 100vw;
+	height: 100vh;
+}
+
+.containerchild {
+	text-align: left;
+	vertical-align: top;
+	overflow-y: scroll;
+	overflow-x: scroll;
+}
+
+.sidebar {
+	width: 15vw;
+	overflow-x: hidden;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	line-height: 16px;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+@keyframes lunaflicker {
+    0% {
+    	color: #FFF;
+    }
+    5% {
+    	color: #FFF;
+    }
+    7% {
+    	color: #777;
+    }
+    9% {
+    	color: #FFF;
+    }
+    11% {
+    	color: #777;
+    }
+    13% {
+    	color: #FFF;
+    }
+    15% {
+    	color: #777;
+    }
+    17% {
+    	color: #FFF;
+    }
+    70% {
+    	color: #FFF;
+    }
+    100% {
+    	color: #AAA;
+    }
+}
+
+.logo {
+	font-size: 32px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	text-shadow: none;
+	filter: url("/static/filter.svg#svgGlow");
+	animation: lunaflicker 8s linear 0s infinite;
+}
+
+.title {
+	font-size: 32px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}

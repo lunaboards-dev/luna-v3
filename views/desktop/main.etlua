@@ -1,0 +1,40 @@
+<% user = user or {} %>
+<!DOCTYPE HTML>
+<html prefix="og: https://ogp.me/ns#">
+    <head>
+        <meta charset="UTF-8" />
+        <% if thread then %>
+            <title>luna/<%= sboard -%>/<%= thread.id -%> - <%= thread.title -%></title>
+        <% elseif sboard then %>
+            <title>luna/<%= sboard -%>/ - <%= boardinfo[sboard].webtitle -%></title>
+        <% else %>
+            <title>luna - Late Night Shitposting</title>
+        <% end %>
+        <% if opengraph then %>
+            <meta property="og:title" content="<%= opengraph.title -%>" />
+            <meta property="og:type" content="<%= opengraph.type -%>" />
+            <meta property="og:url" content="<%= url -%>" />
+            <meta property="og:site_name" content="luna" />
+            <% if opengraph.image then %>
+                <meta property="og:image" content="<%= opengraph.image -%>" />
+            <% end %>
+        <% end %>
+        <link rel="icon" type="image/png" href="/static/moooon.png" />
+		<link rel=“preload” href=“/static/neon_pixel-7.ttf” as=“font” />
+		<link rel=“preload” href=“/static/FSEX300.ttf” as=“font” />
+        <link rel="stylesheet" type="text/css" href="/themes/<%= user.theme or "classic" -%>.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/base.css" />
+    </head>
+    <body>
+        <table id="container">
+            <tr>
+                <td class="containerchild sidebar">
+                    <% render("views.desktop.sidebar", _G) %>
+                </td>
+                <td class="containerchild">
+                    <% content_for("inner") %>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

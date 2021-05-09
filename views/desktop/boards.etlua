@@ -1,0 +1,4 @@
+<div class="logo">luna</div>
+<% for _, board in ipairs(boards) do %>
+	<a href="/<%= board -%>/">/<%= board -%>/ - <%= boardinfo[board].name -%></a><br>
+<% end %>

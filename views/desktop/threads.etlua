@@ -1,0 +1,10 @@
+<a href=".."><div class="title"><%= boardinfo[sboard].name -%></div></a>
+<%= boardinfo[sboard].desc -%><br><br>
+<a href="new">New Post</a><br><br>
+<% if #threads == 0 then %>
+	Empty directory.
+<% else %>
+	<% for i=1, #threads do local thread = threads[i] %>
+		<a href="/<%= board -%>/<%= string.format("%x", thread.id) -%>"><%= thread.name -%></a>
+	<% end %>
+<% end %>
