@@ -1,6 +1,7 @@
 local files = {}
 local utils = require("utils")
 local blake2b = require("utils.blake2b")
+local models = require("models")
 
 -- The be all-catch all
 function files.getuuid(ext, content, mime)
