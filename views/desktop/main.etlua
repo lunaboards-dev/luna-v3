@@ -31,12 +31,14 @@
                 <td class="containerchild sidebar">
                     <% render("views.desktop.sidebar", _G) %>
                 </td>
-                <td class="containerchild" rowspan="2">
-                    <% content_for("inner") %>
+                <td class="containerchild contentsupercontainer" rowspan="2">
+                    <div class="contentcontainer">
+                        <% content_for("inner") %>
+                    </div>
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="containerchild">
                     <% render("views.desktop.sidebar2", _G) %>
                 </td>
             </tr>

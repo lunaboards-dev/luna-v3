@@ -17,4 +17,5 @@
 		</div>
 	<% end %>
 <% end %>
-<a href="/config/" class="sidebar-board">cfg</span>
+<a href="/config" class="sidebar-board">cfg</span><br>
+<a href="/login" class="sidebar-board">authenticate</span>

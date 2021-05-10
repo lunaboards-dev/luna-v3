@@ -68,3 +68,5 @@ CREATE TABLE filereftrack (
 	ext text NOT NULL,
 	mime text
 );
+
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO luna;

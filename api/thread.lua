@@ -47,7 +47,7 @@ function api.newpost(args)
 		admin = args.admin,
 		content = args.body,
 		picture = args.picture,
-		original_picture = args.original_picture,
+		original_name = args.original_picture,
 		ip = args.ip
 	})
 end

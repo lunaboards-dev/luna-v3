@@ -44,4 +44,15 @@ function utils.uuid()
 	return d
 end
 
+local scale = {"bytes", "KiB", "MiB", "GiB"}
+function utils.machine_to_human(mach)
+	mach = mach or 0
+	local i = 1
+	while mach >= 1024 do
+		mach = mach / 1024
+		i = i + 1
+	end
+	return string.format("%.1f %s", mach, scale[i])
+end
+
 return utils

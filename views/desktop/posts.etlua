@@ -8,6 +8,16 @@
 <% for i=1, #posts do local post = posts[i] %>
 	<div class="post-container">
 		<span class="post-header">ID: <%= post.id -%> Date: <%= post.created_at -%> <span style="color: #<%= (post.trip:match("!(.+)") or post.trip):sub(1, 6) -%>"><%= post.trip -%></span></span><br>
-		<p><%- require("utils.post").format(post.content) -%></p>
+		<% if post.picture then %>
+			<% local file, thumb, ext, mime = require("utils.files").getnames(post.picture) %>
+			<span class="image-header">Original image: <a href="<%= file -%>"><%= post.original_name -%></a> (<%= require("utils").machine_to_human(require("utils.files").getsize(post.picture)) -%>)</span><br>
+		<% end %>
+		<p><% if post.picture then %>
+			<% local file, thumb, ext, mime = require("utils.files").getnames(post.picture) %>
+			<% if (mime == "image/gif") then %>
+			   <a href="<%= file -%>"><img src="<%= file -%>" class="userimg" align="top" /></a>
+		   <% else %>
+			   <a href="<%= file -%>"><img src="<%= thumb -%>" class="userimg" align="top" /></a>
+		   <% end end %>| <%- require("utils.post").format(post.content) -%></p>
 	</div>
 <% end %>

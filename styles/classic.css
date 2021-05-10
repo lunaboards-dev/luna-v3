@@ -4,7 +4,7 @@ body {
 }
 
 .quote {
-	color: $5;
+	color: $d;
 }
 
 a {
@@ -24,7 +24,12 @@ a:visited {
 	background-color: $7;
 }
 
-input, textarea {
+input, textarea, ::file-selector-button {
 	background-color: $7;
 	color: $0;
+}
+
+.contentsupercontainer {
+	border-left-color: $7;
+	border-left-style: solid;
 }
