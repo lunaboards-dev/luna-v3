@@ -1,4 +1,4 @@
--- Schema version lunav3-0-0-1620532800
+-- Schema version lunav3-0-0-1620622800
 -- Luna version lunav3-0-0
 
 DROP TABLE IF EXISTS "engine-info";
@@ -14,7 +14,7 @@ CREATE TABLE "engine-info" (
 	"schema-version" text NOT NULL
 );
 
-INSERT INTO "engine-info"(engine, "engine-version", "schema-version") VALUES ('luna', 'lunav3-0-0', 'lunav3-0-0-1620532800');
+INSERT INTO "engine-info"(engine, "engine-version", "schema-version") VALUES ('luna', 'lunav3-0-0', 'lunav3-0-0-1620622800');
 
 CREATE TABLE threads (
 	board text NOT NULL,
