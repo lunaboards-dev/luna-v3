@@ -7,4 +7,5 @@ end
 loadsubapi("boards")
 loadsubapi("thread")
 loadsubapi("threads")
+loadsubapi("files")
 return api

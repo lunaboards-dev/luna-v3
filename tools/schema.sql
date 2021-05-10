@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS threads;
 DROP TABLE IF EXISTS admins;
 DROP TABLE IF EXISTS adminpriv;
 DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS filereftrack;
 
 CREATE TABLE "engine-info" (
 	engine text NOT NULL,
@@ -56,4 +57,14 @@ CREATE TABLE adminpriv (
 	uuid UUID NOT NULL,
 	board text NOT NULL,
 	flags integer NOT NULL
+);
+
+CREATE TABLE filereftrack (
+	filename text NOT NULL,
+	thumbnail text NOT NULL,
+	blake2 text NOT NULL,
+	refcount integer NOT NULL DEFAULT 1,
+	uuid UUID NOT NULL,
+	ext text NOT NULL,
+	mime text
 );

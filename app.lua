@@ -5,6 +5,7 @@ local utils = require("utils")
 app:enable("etlua")
 api = require("api.init")
 app.layout = require("views.desktop.main")
+math.randomseed(os.time())
 
 --[[local db = require("lapis.db")
 app:before_filter(function()

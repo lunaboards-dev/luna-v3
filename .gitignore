@@ -6,3 +6,5 @@ client_body_temp/*
 proxy_temp/*
 scgi_temp/*
 logs/*
+uploads/**
+!uploads/*/.gitcreate

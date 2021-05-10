@@ -2,8 +2,8 @@
 # this is used to make sure we don't have database schema problems
 [engine]
 engine_version = "lunav3-0-0"
-schema_version = "lunav3-0-0-1620532800"
-nice_version = "v3.0.0"
+schema_version = "lunav3-0-0-1620622800"
+nice_version = "v3.0.0-indev"
 
 [engine.version-history]
 
@@ -12,6 +12,10 @@ nice_version = "v3.0.0"
 [engine.version-history.schema.lunav3-0-0-1620532800]
 changelog = [
 	"initial version"
+]
+[engine.version-history.schema.lunav3-0-0-1620622800]
+changelog = [
+	"added file tracking"
 ]
 
 [engine.version-history.engine]

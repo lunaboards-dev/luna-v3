@@ -1,7 +1,7 @@
 -- random utils
 local utils = {}
 local config = require("utils.luna-config")
-local blake2s = require("utils.blake2s")
+local blake2s = require("utils.blake2b")
 local b64 = require("utils.ee5_base64")
 
 function utils.safecall(func, ...)
@@ -35,6 +35,13 @@ function utils.randomstring(ent)
 	else
 		return ent[math.random(1, #ent)]
 	end
+end
+
+function utils.uuid()
+	local h = io.popen("uuidgen", "r")
+	local d = h:read("*a"):gsub("%s", "")
+	h:close()
+	return d
 end
 
 return utils
