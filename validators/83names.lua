@@ -35,4 +35,5 @@ return function(thread)
 		thread.title = name
 		-- procede
 	end
+	return true
 end

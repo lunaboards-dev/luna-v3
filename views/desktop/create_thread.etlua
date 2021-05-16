@@ -8,7 +8,7 @@
 	<input type="text" name="trip" maxlength="64"/><br>
 	<br>
 	<textarea name="body" maxlength="2000"></textarea><br>
-	<input type="file" name="file"><br><br>
+	<input type="file" name="picture"><br><br>
 	<input type="submit" value="Submit"><br>
 	<input type="hidden" value="<%= sboard -%>" name="board">
 </form>
