@@ -15,7 +15,8 @@ config({"development", "production"}, {
 		user = "luna"
 	},
 	secret = cfg.luna.secret,
-	session_name = "luna"
+	session_name = "luna",
+	num_workers = 4
 })
 
 config("production", {
