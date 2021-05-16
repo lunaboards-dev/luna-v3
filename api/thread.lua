@@ -33,7 +33,7 @@ function api.newpost(args)
 		end
 	else
 		io.stdout:write("\n\n\n",tostring(args.ip),"\n\n\n")
-		args.trip = util.tripcode(args.ip, args.title)
+		args.trip = util.tripcode(args.ip, args.title..args.thread)
 	end
 	if args.picture then
 		api.upload_picture(args)
