@@ -21,7 +21,7 @@ return respond_to {
 		local id = api.newthread(args, req.params)
 		if not id then
 			req.session.message = [[<span class="error">Invalid arguments</span>]]
-			{redirect_to = req:build_url(req.req.headers.referer, {
+			return {redirect_to = req:build_url(req.req.headers.referer, {
 				status = 302
 			})}
 		end
