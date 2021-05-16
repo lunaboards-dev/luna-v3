@@ -23,7 +23,8 @@ return respond_to {
 		local args = req.params
 		args.force = false -- no
 		args.admin = req.admin
-		args.ip = req.req.remote_addr
+		--args.ip = req.req.remote_addr
+		args.ip = req.ip
 		--io.stdout:write("\n\n\n",tostring(args.ip),"\n\n\n")
 		local thd = api.getthread(args.board, args.thread)
 		if not thd then

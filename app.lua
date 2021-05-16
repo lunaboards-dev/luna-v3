@@ -25,6 +25,9 @@ end)]]
 
 app:before_filter(utils.handlemessage)
 app:before_filter(admins.authfilter)
+app:before_filter(function(req)
+	req.ip = req.req.headers["X-Forwarded-For"] or req.headers["X-Real-IP"] or req.req.remote_addr
+end)
 
 -- Pages
 app:get("boards", "/", utils.reqwrap(require("pages.main")))

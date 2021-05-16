@@ -3,7 +3,7 @@ local toml = require("utils.toml")
 local cfg = {}
 
 do
-	local h = io.open("config.toml", "r")
+	local h = io.open("/etc/luna-v3/config.toml", "r") or io.open("config.toml", "r")
 	cfg = toml.parse(h:read("*a"))
 	h:close()
 	cfg.boardlookup = {}

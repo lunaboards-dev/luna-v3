@@ -13,7 +13,8 @@ return respond_to {
 	POST = function(req)
 		local args = req.params
 		args.admin = req.admin
-		args.ip = req.req.remote_addr
+		--args.ip = req.req.remote_addr
+		args.ip = req.ip
 		if not cfg.boardlookup[req.params.board] then
 			return req.app.handle_404(req)
 		end
