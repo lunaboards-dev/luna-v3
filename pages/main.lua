@@ -1,3 +1,4 @@
+local cfg = require("utils.luna-config")
 return function(req)
 	req.opengraph = {
 		title = "luna - late night shitposting",
