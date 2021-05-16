@@ -27,6 +27,7 @@ app:before_filter(utils.handlemessage)
 app:before_filter(admins.authfilter)
 app:before_filter(function(req)
 	req.ip = req.req.headers["X-Forwarded-For"] or req.headers["X-Real-IP"] or req.req.remote_addr
+	req.headers = {}
 	req.headers["Access-Control-Allow-Origin"] = "*" -- fucking CORS
 end)
 
@@ -41,10 +42,10 @@ app:match("posts", "/:board/:thread", utils.reqwrap(require("pages.posts")))
 app:get("themes", "/themes/:theme", require("pages.themes"))
 
 -- APIs
-app:get("api_v0_boards", "/api/v0/boards", require("api.endpoints.v0.boards"))
-app:get("api_v0_files", "/api/v0/files", require("api.endpoints.v0.pictures"))
-app:get("api_v0_threads", "/api/v0/threads", require("api.endpoints.v0.threads"))
-app:get("api_vichan_boards", "/boards.json", utils.reqwrap(require("api.endpoints.vichan.boards")))
+app:get("api_v0_boards", "/api/v0/boards", utils.reqwrap(require("api.endpoints.v0.boards")))
+app:get("api_v0_files", "/api/v0/files", utils.reqwrap(require("api.endpoints.v0.pictures")))
+app:get("api_v0_threads", "/api/v0/threads", utils.reqwrap(require("api.endpoints.v0.threads")))
+app:get("api_vichan_boards", "/boards.json", utils.reqwrap(utils.reqwrap(require("api.endpoints.vichan.boards"))))
 
 function app:handle_404()
 	self.path = self.req.parsed_url.path
