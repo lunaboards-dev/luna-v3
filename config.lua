@@ -11,6 +11,9 @@ config({"development", "production"}, {
 		database = cfg.database.database,
 		port = cfg.database.port
 	},
+	systemd = {
+		user = "luna"
+	}
 	secret = cfg.luna.secret,
 	session_name = "luna"
 })
