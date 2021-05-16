@@ -12,7 +12,7 @@ return respond_to {
 		req.posts = api.getposts(req.params.board, req.params.thread)
 		req.thread = thd
 		req.opengraph = {
-			title = string.format("luna/%s/ - %s", req.params.board, cfg.boardinfo[req.params.board].name),
+			title = string.format("luna/%s/ - %s", req.params.board, thd.name),
 			url = string.format("%s/%s/%s", cfg.luna.url, req.params.board, req.params.thread),
 			desc = req.posts[1].content
 		}
