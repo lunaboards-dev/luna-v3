@@ -7,6 +7,7 @@ function api.upload_picture(args)
 	local fdat = args.picture.content
 	local fname = args.picture.filename
 	local mime = args.picture["content-type"]
+	if not fdat or #fdat == 0 then args.picture = nil return end
 	for k, v in pairs(args.picture) do
 		print(k)
 	end
@@ -16,4 +17,5 @@ function api.upload_picture(args)
 	local uuid = files.getuuid(ext, fdat, mime)
 	args.picture = uuid
 	args.original_picture = fname
+	files.incref(uuid)
 end

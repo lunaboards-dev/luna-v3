@@ -10,10 +10,10 @@ function files.getuuid(ext, content, mime)
 	local refs = models.fileref:select("where blake2 = ?", hash)
 	if #refs > 0 then -- Best to assume collisions may happens at some point and some time
 		for i=1, #refs do -- Because you never really know if they will
-			local h = io.open(refs[i].filename, "r")
+			local h = io.open(refs[i].filename:sub(2), "r")
 			local dat = h:read("*a")
 			h:close()
-			if (h == fdat) then
+			if (dat == content) then
 				return refs[i].uuid
 			end
 		end
@@ -29,43 +29,46 @@ function files.getuuid(ext, content, mime)
 		blake2 = hash,
 		uuid = uuid,
 		ext = ext,
-		mime = mime
+		mime = mime,
+		refcount = 0
 	})
 	return uuid
 end
 
 function files.getnames(uuid)
 	local ref = models.fileref:find(uuid)
+	if not ref then return "notfound", "notfound", "notfound", "nil/null" end
 	return ref.filename, ref.thumbnail, ref.ext, ref.mime
 end
 
 function files.incref(uuid)
 	local ref = models.fileref:find(uuid)
-	refs.refcount = refs[i].refcount + 1
-	refs:update("refcount")
-	return refs.refcount
+	ref.refcount = ref.refcount + 1
+	ref:update("refcount")
+	return ref.refcount
 end
 
 function files.remove(uuid)
 	local ref = models.fileref:find(uuid)
-	os.remove(refs.filename)
-	os.remove(refs.thumbnail)
+	os.remove(ref.filename:sub(2))
+	os.remove(ref.thumbnail:sub(2))
 	ref:delete()
 end
 
 function files.decref(uuid)
 	local ref = models.fileref:find(uuid)
-	refs.refcount = refs[i].refcount - 1
-	refs:update("refcount")
-	if (refs == 0) then
+	ref.refcount = ref.refcount - 1
+	ref:update("refcount")
+	if (ref.refcount == 0) then
 		files.remove(uuid)
 	end
-	return refs.refcount
+	return ref.refcount
 end
 
 function files.getsize(uuid)
 	local ref = models.fileref:find(uuid)
-	io.stdout:write("\n\n\n",assert(lfs.attributes(ref.filename:sub(2), "size")),"\n\n\n")
+	if not ref then return 0 end
+	--io.stdout:write("\n\n\n",assert(lfs.attributes(ref.filename:sub(2), "size")),"\n\n\n")
 	return assert(lfs.attributes(ref.filename:sub(2), "size"))
 end
 

@@ -12,10 +12,13 @@
 		<div class="threads">
 			<% for j=1, #threads do local thread=threads[j] %>
 				<% local tlistc = "├" if j == #threads then tlistc = "└" end %>
-				│&nbsp;<%= tlistc -%>─<a href="/<%= board -%>/<%= thread.id -%>" class="sidebar-thread <% if sthreadid == thread.id then %> selected<% end %>"> <%= thread.name -%></a><br>
+				<% if i==#boards then%>&nbsp;<%else%>│<%end%>&nbsp;<%= tlistc -%>─<a href="/<%= thread.board -%>/<%= thread.id -%>" class="sidebar-thread <% if sthreadid == thread.id then %> selected<% elseif api.ismarked(thread.board, thread.id) then%> marked<%elseif api.islocked(thread.board, thread.id) then%> locked<%end%>"> <%= thread.name -%></a><br>
 			<% if (i == 20) then break end end %>
 		</div>
 	<% end %>
 <% end %>
-<a href="/config" class="sidebar-board">cfg</span><br>
-<a href="/login" class="sidebar-board">authenticate</span>
+<a href="/config" class="sidebar-board">cfg</a><br>
+<a href="/auth" class="sidebar-board">auth</a>
+<% if admin then %>
+	<br><a href="/logout" class="sidebar-board">logout</a>
+<% end %>

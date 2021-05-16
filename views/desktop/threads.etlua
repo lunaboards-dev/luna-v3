@@ -10,6 +10,16 @@
 	Empty directory.
 <% else %>
 	<% for i=1, #threads do local thread = threads[i] %>
-		<a href="/<%= sboard -%>/<%= thread.id -%>"><%= thread.name -%></a><br>
+		<% if admin then %>
+			<% if api.checkperms(admin, thread.board, api.flags.perm_lock) then %>(<a href="/admctl?board=<%= thread.board -%>&thd=<%= thread.id -%>&cmd=lock">Lock</a>)<% end %>
+			<% if api.checkperms(admin, thread.board, api.flags.perm_mark) then %>(<a href="/admctl?board=<%= thread.board -%>&thd=<%= thread.id -%>&cmd=mark">Mark</a>)<% end %>
+			<% if api.checkperms(admin, thread.board, api.flags.perm_delete_thread) then %>(<a href="/admctl?board=<%= thread.board -%>&thd=<%= thread.id -%>&cmd=delthread">Delete</a>)<% end %>
+			<% if api.checkperms(admin, thread.board, api.flags.perm_viewip) then %><%= thread.ip -%><% end %>
+		<% end %>
+		<a href="/<%= thread.board -%>/<%= thread.id -%>" class="<% if api.ismarked(thread.board, thread.id) then %>marked<% elseif api.islocked(thread.board, thread.id) then %>locked<%end%>"><%= thread.name -%></a>
+		<% if sboard == "all" then %>
+			<span class="allboard">/<%= thread.board -%>/</span>
+		<% end %>
+		<br>
 	<% end %>
 <% end %>

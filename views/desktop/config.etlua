@@ -1,10 +1,11 @@
 Configuration
 <form>
-	<input type="checkbox" <%= user.js_enabled and "checked" or "" %> name="js_enabled" />
-	<label for="js_enabled">Enable JavaScript</label>
+	<input class="config" type="checkbox" <%= user.js_enabled and "checked" or "" %> name="js_enabled" />
+	<label for="js_enabled">Enable JavaScript</label><br>
 	Theme:
-	<select name="theme">
+	<select class="config" name="theme">
 		<option value="classic">Classic Luna theme</option>
 	</select>
-	<input type="submit" value="Submit">
+	<br>
+	<input class="config" type="submit" value="Submit">
 </form>

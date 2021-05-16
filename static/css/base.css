@@ -11,8 +11,12 @@
 	-moz-osx-font-smoothing: none;
 }
 
+.glow {
+	filter: url("/static/filter.svg#svgGlowS");
+}
+
 #container {
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
 }
 
@@ -21,6 +25,7 @@
 	vertical-align: top;
 	overflow-y: scroll;
 	overflow-x: scroll;
+
 }
 
 .sidebar {
@@ -32,6 +37,7 @@ body {
 	margin: 0;
 	padding: 0;
 	line-height: 16px;
+	scroll-snap-points-y: repeat(1px);
 }
 
 a {
@@ -90,12 +96,17 @@ a:hover {
 	margin-bottom: 8px;
 }
 
-input, textarea, ::file-selector-button {
+select {
+	appearance: none;
+}
+
+input, textarea, ::file-selector-button, select, option {
 	resize: none;
 	padding:0;
 	margin:0;
 	border-width: 0;
-	font-family: 'Unifont'
+	font-family: 'Unifont';
+	text-align: left;
 }
 
 ::file-selector-button {
@@ -116,6 +127,13 @@ input, textarea {
   	height: auto;
 }
 
+.userimg:hover {
+	max-width: 40vw;
+	max-width: 40vh;
+	width: auto;
+  	height: auto;
+}
+
 textarea {
 	font-size: 16px;
 }
@@ -125,8 +143,18 @@ textarea {
 	height: 100%;
 }
 
+.config {
+	width: auto !important;
+}
+
 .contentsupercontainer {
 	margin-left: 4px;
 	padding-left: 4px;
 	border-left-width: 1px;
+}
+
+.floatingsidebar {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 4px;
 }

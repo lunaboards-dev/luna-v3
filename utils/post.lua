@@ -3,7 +3,7 @@ local post = {}
 local formatters = {
 	function(line)
 		if line:sub(1, 1) == ">" then
-			return '<span class="quote">&gt;'..line:sub(2):gsub("^%s", "")..'</span>'
+			return '<span class="quote glow">&gt;'..line:sub(2):gsub("^%s", "")..'</span>'
 		end
 		return line
 	end,

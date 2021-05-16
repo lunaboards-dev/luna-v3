@@ -10,7 +10,9 @@ config({"development", "production"}, {
 		password = cfg.database.password,
 		database = cfg.database.database,
 		port = cfg.database.port
-	}
+	},
+	secret = cfg.luna.secret,
+	session_name = "luna"
 })
 
 config("production", {

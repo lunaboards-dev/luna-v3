@@ -11,9 +11,16 @@ local threadflags = {
 local validators = {}
 
 function api.getthreads(board, page, pagesize)
-	local pages = models.thread:paginated("where board = ? order by pin desc, updated_at desc, name asc", board, {
-		per_page = pagesize or 50
-	})
+	local pages
+	if not board or board == "all" then
+		pages = models.thread:paginated("order by pin desc, updated_at desc, name asc", {
+			per_page = pagesize or 50
+		})
+	else
+		pages = models.thread:paginated("where board = ? order by pin desc, updated_at desc, name asc", board, {
+			per_page = pagesize or 50
+		})
+	end
 	return pages:get_page(page)
 end
 
@@ -74,3 +81,18 @@ function api.newthread(args)
 	thd:update("flags")
 	return args.thread
 end
+
+function api.deletethread(board, id)
+	local thread = models.thread:find(board, id)
+	local posts = models.post:select("where board = ? and thread = ?", thread.board, thread.id)
+	for _, post in ipairs(posts) do
+		api.deletepost(post.id)
+	end
+	thread:delete()
+end
+
+api.flags.thread_creating = 1
+api.flags.thread_locked = 2
+api.flags.thread_marked = 4
+api.flags.thread_nogc = 8
+api.flags.thread_tolock = 16 -- testing flag

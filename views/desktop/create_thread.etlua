@@ -1,4 +1,4 @@
-<a href=".."><div class="title"><%= boardinfo[sboard].name -%></div></a>
+<a href="/<%=sboard -%>"><div class="title"><%= boardinfo[sboard].name -%></div></a>
 <%= boardinfo[sboard].desc -%><br><br>
 
 <form method="post" enctype="multipart/form-data">

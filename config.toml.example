@@ -11,8 +11,19 @@ boards = [
 	"t",
 	"v",
 	"p",
-	"txt"
+	"txt",
+	"all"
 ]
+url = "changeme"
+pagesize = 50
+
+[threadgc]
+enabled = false
+lock_age = 604800
+delete_age = 777600
+
+[bcrypt]
+rounds = 9
 
 [database]
 host = "localhost"

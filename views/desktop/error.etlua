@@ -1,0 +1,5 @@
+<div class="title">Internal Server Error</div>
+kernel panic!: <%= err -%><br />
+<% for line in trace:gmatch("[^\n]+") do %>
+	<%= line -%><br />
+<% end %>

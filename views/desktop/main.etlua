@@ -4,7 +4,8 @@
     <head>
         <meta charset="UTF-8" />
         <% if thread then %>
-            <title>luna/<%= sboard -%>/<%= thread.id -%> - <%= thread.title -%></title>
+            <!--%= thread.id -%-->
+            <title>luna/<%= sboard -%>/ - <%= thread.name -%></title>
         <% elseif sboard then %>
             <title>luna/<%= sboard -%>/ - <%= require("utils").randomstring(boardinfo[sboard].webtitle) -%></title>
         <% else %>
@@ -12,34 +13,35 @@
         <% end %>
         <% if opengraph then %>
             <meta property="og:title" content="<%= opengraph.title -%>" />
-            <meta property="og:type" content="<%= opengraph.type -%>" />
-            <meta property="og:url" content="<%= url -%>" />
+            <!--meta property="og:type" content="<%= opengraph.type -%>" /-->
+            <meta property="og:url" content="<%= opengraph.url -%>" />
             <meta property="og:site_name" content="luna" />
             <% if opengraph.image then %>
                 <meta property="og:image" content="<%= opengraph.image -%>" />
             <% end %>
+            <% if opengraph.desc then %>
+                <meta property="og:description" content="<%= opengraph.desc -%>" />
+                <meta property="description" content="<%= opengraph.desc -%>" />
+            <% end %>
         <% end %>
         <link rel="icon" type="image/png" href="/static/moooon.png" />
-		<link rel=“preload” href=“/static/neon_pixel-7.ttf” as=“font” />
-		<link rel=“preload” href=“/static/FSEX300.ttf” as=“font” />
-        <link rel="stylesheet" type="text/css" href="/themes/<%= user.theme or "classic" -%>.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/base.css" />
+        <link rel="stylesheet" type="text/css" href="/themes/<%= user.theme or "classic" -%>.css" />
     </head>
     <body>
         <table id="container">
             <tr>
-                <td class="containerchild sidebar">
-                    <% render("views.desktop.sidebar", _G) %>
-                </td>
-                <td class="containerchild contentsupercontainer" rowspan="2">
-                    <div class="contentcontainer">
-                        <% content_for("inner") %>
+                <td class="containerchild sidebar" valign="top">
+                    <div class="floatingsidebar">
+                        <% render("views.desktop.sidebar", _G) %><br><br>
+                        <% render("views.desktop.sidebar2", _G) %>
                     </div>
                 </td>
-            </tr>
-            <tr>
-                <td class="containerchild">
-                    <% render("views.desktop.sidebar2", _G) %>
+                <td class="containerchild contentsupercontainer"  valign="top">
+                    <div class="contentcontainer">
+                        <% if message then %><%- message -%><% end %>
+                        <% content_for("inner") %>
+                    </div>
                 </td>
             </tr>
         </table>

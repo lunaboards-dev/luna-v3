@@ -1,7 +1,11 @@
 local models = require("models")
 local respond_to = require("lapis.application").respond_to
+local cfg = require("utils.luna-config")
 return respond_to {
 	GET = function(req)
+		if not cfg.boardlookup[req.params.board] then
+			return req.app.handle_404(req)
+		end
 		req.threads = models.thread:select("where board = ?", req.params.board)
 		req.sboard = req.params.board
 		return {render = "desktop.create_thread"}
@@ -10,6 +14,9 @@ return respond_to {
 		local args = req.params
 		args.admin = req.admin
 		args.ip = req.req.remote_addr
+		if not cfg.boardlookup[req.params.board] then
+			return req.app.handle_404(req)
+		end
 		local id = api.newthread(args, req.params)
 		return {redirect_to = req:build_url("/"..args.board.."/"..id, {
 			status = 302

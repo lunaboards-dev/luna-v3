@@ -3,6 +3,7 @@ local utils = {}
 local config = require("utils.luna-config")
 local blake2s = require("utils.blake2b")
 local b64 = require("utils.ee5_base64")
+local bcrypt = require("bcrypt")
 
 function utils.safecall(func, ...)
 	local args = {...}
@@ -53,6 +54,11 @@ function utils.machine_to_human(mach)
 		i = i + 1
 	end
 	return string.format("%.1f %s", mach, scale[i])
+end
+
+function utils.handlemessage(req)
+	req.message = req.session.message
+	req.session.message = nil
 end
 
 return utils

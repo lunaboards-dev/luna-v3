@@ -24,7 +24,7 @@ a:visited {
 	background-color: $7;
 }
 
-input, textarea, ::file-selector-button {
+input, textarea, ::file-selector-button, select, option {
 	background-color: $7;
 	color: $0;
 }
@@ -32,4 +32,20 @@ input, textarea, ::file-selector-button {
 .contentsupercontainer {
 	border-left-color: $7;
 	border-left-style: solid;
+}
+
+.locked, .allboard {
+	color: $8 !important;
+}
+
+.marked {
+	color: $1 !important;
+}
+
+.error {
+	color: $9;
+}
+
+.success {
+	color: $a;
 }
