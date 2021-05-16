@@ -13,7 +13,7 @@ config({"development", "production"}, {
 	},
 	systemd = {
 		user = "luna"
-	}
+	},
 	secret = cfg.luna.secret,
 	session_name = "luna"
 })
