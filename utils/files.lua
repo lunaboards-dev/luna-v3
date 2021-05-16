@@ -19,7 +19,7 @@ function files.getuuid(ext, content, mime)
 		end
 	end
 	local uuid = utils.uuid()
-	local f = io.open("uploads/full/"..uuid.."."..ext, "w")
+	local f = assert(io.open("uploads/full/"..uuid.."."..ext, "w"))
 	f:write(content)
 	f:close()
 	os.execute("convert uploads/full/"..uuid.."."..ext.." -resize 500x500\\> uploads/thumbs/"..uuid.."."..ext)
