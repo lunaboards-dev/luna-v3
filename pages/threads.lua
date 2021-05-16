@@ -11,7 +11,8 @@ return function(req)
 	req.sboard = req.params.board
 	req.opengraph = {
 		title = string.format("luna/%s/ - %s", req.params.board, cfg.boardinfo[req.params.board].name),
-		url = string.format("%s/%s", cfg.luna.url, req.params.board)
+		url = string.format("%s/%s", cfg.luna.url, req.params.board),
+		image = string.format("%s%s", cfg.luna.url, "/static/moooon.png"),
 	}
 	return {render = "desktop.threads"}
 end

@@ -1,5 +1,6 @@
 local respond_to = require("lapis.application").respond_to
 local cfg = require("utils.luna-config")
+local files = require("utils.files")
 return respond_to {
 	GET = function(req)
 		local thd = api.getthread(req.params.board, req.params.thread)
@@ -14,7 +15,8 @@ return respond_to {
 		req.opengraph = {
 			title = string.format("luna/%s/ - %s", req.params.board, thd.name),
 			url = string.format("%s/%s/%s", cfg.luna.url, req.params.board, req.params.thread),
-			desc = req.posts[1].content
+			desc = req.posts[1].content,
+			image = string.format("%s%s", cfg.luna.url, req.posts[1].picture and files.getnames(req.posts[1].picture) or "/static/moooon.png")
 		}
 
 		return {render = "desktop.posts", code = req.thread and 200 or 404}
