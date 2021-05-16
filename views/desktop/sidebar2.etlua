@@ -6,9 +6,9 @@
 	<% else %>
 		<form method="post" enctype="multipart/form-data" action="/<%=sboard-%>/<%=sthreadid-%>">
 			<label for="trip">trip</label><br>
-			<input type="text" name="trip" /><br>
+			<input type="text" name="trip" maxlength="64"/><br>
 			<br>
-			<textarea name="body"></textarea><br><br>
+			<textarea name="body" maxlength="2000"></textarea><br><br>
 			<input type="file" name="picture"><br><br>
 			<input type="submit" value="Submit">
 			<input type="hidden" value="<%= sboard -%>" name="board">
@@ -17,11 +17,11 @@
 <% elseif sboard then %>
 <form method="post" enctype="multipart/form-data" action="/<%=sboard-%>/new">
 	<label for="title">title</label><br>
-	<input type="text" name="title" /><br>
+	<input type="text" name="title" maxlength="32" /><br>
 	<label for="trip">trip</label><br>
-	<input type="text" name="trip" /><br>
+	<input type="text" name="trip" maxlength="64"/><br>
 	<br>
-	<textarea name="body"></textarea><br><br>
+	<textarea name="body" maxlength="2000"></textarea><br><br>
 	<input type="file" name="picture"><br><br>
 	<input type="submit" value="Submit">
 	<input type="hidden" value="<%= sboard -%>" name="board">

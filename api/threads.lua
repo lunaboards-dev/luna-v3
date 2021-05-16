@@ -49,7 +49,7 @@ end
 
 
 function api.newthread(args)
-	args.title = args.title or "i'm a lazy cunt"
+	if not args.title then return false end
 	args.body = args.body or "wtf is a poland"
 	args.title = args.title:sub(1, 32)
 	args.body = args.body:sub(1, 2000):gsub("[\r\n]+", function(match)

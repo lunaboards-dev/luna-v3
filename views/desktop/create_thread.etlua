@@ -3,11 +3,11 @@
 
 <form method="post" enctype="multipart/form-data">
 	<label for="title">title</label><br>
-	<input type="text" name="title" /><br>
+	<input type="text" name="title" maxlength="32"/><br>
 	<label for="trip">trip</label><br>
-	<input type="text" name="trip" /><br>
+	<input type="text" name="trip" maxlength="64"/><br>
 	<br>
-	<textarea name="body"></textarea><br>
+	<textarea name="body" maxlength="2000"></textarea><br>
 	<input type="file" name="file"><br><br>
 	<input type="submit" value="Submit"><br>
 	<input type="hidden" value="<%= sboard -%>" name="board">

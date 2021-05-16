@@ -38,6 +38,9 @@ function api.newpost(args)
 	if args.picture then
 		api.upload_picture(args)
 	end
+	if not args.picture and args.body == "" then
+		args.body = "wtf is a poland"
+	end
 	local thd = models.thread:find(args.board, args.thread)
 	thd.count = thd.count+1
 	thd:update("count", {

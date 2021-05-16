@@ -11,7 +11,7 @@
 <%else%>
 	<%= thread.name -%><br><br>
 	<% for i=1, #posts do local post = posts[i] %>
-		<div class="post-container">
+		<div class="post-container" id="post_<%= post.id -%>">
 			<% if admin then %>
 				<% if api.checkperms(admin, thread.board, api.flags.perm_delete) then %>(<a href="/admctl?post=<%= post.id -%>&cmd=del">Delete</a>)<% end %>
 				<% if api.checkperms(admin, thread.board, api.flags.perm_viewip) then %><%= post.ip -%><% end %>
