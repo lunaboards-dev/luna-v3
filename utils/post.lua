@@ -15,7 +15,7 @@ local formatters = {
 			end
 			return "&gt;&gt;"..id
 		end)
-	end
+	end,
 	function(line, src)
 		if line:sub(1, 1) == ">" then
 			return '<span class="quote glow">&gt;'..line:sub(2):gsub("^%s", "")..'</span>'
