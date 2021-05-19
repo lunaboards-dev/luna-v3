@@ -1,10 +1,11 @@
 local post = {}
 local models = require("models")
+local db = require("lapis.db")
 
 local formatters = {
 	function(line, src)
 		return line:gsub(">>(%d+)", function(id)
-			local post = models.post:select("where id=?", tonumber(id))[1]
+			local post = models.post:find(tonumber(id))
 			if post then
 				if (post.board == src.board and post.thread == src.thread) then
 					return "<a class=\"quote glow\" href=\"#post_"..id.."\">&gt;&gt;"..id.."</a>"

@@ -9,7 +9,8 @@ config({"development", "production"}, {
 		user = cfg.database.user,
 		password = cfg.database.password,
 		database = cfg.database.database,
-		port = cfg.database.port
+		port = cfg.database.port,
+		timeout = 5000 -- fuck off
 	},
 	systemd = {
 		user = "luna"
