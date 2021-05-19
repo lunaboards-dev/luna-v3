@@ -15,7 +15,7 @@ function post.format(post, src)
 					local id = line:sub(st+2, en)
 					oen = en+1
 					if id ~= "" then
-						local post = models.post:find(tonumber(id))
+						local post = models.post:select("where id = ?", tonumber(id))[1]
 						if post then
 							if (post.board == src.board and post.thread == src.thread) then
 								nline = nline .. "<a class=\"quote glow\" href=\"#post_"..id.."\">&gt;&gt;"..id.."</a>"
