@@ -1,4 +1,5 @@
-<% if thread then %>
+<% local cfg = require("utils.luna-config")
+   if thread then %>
 	<% if api.ismarked(sboard, thread.id) then %>
 		<span style="lockedtext">Thread is marked for deletion.</span>
 	<% elseif api.islocked(sboard, thread.id) then %>
@@ -9,7 +10,7 @@
 			<input type="text" name="trip" maxlength="64"/><br>
 			<br>
 			<textarea name="body" maxlength="2000"></textarea><br><br>
-			<% if not require("utils.luna-config").boardinfo[sboard].noimg then %>
+			<% if not cfg.boardinfo[sboard].noimg then %>
 				<input type="file" name="picture"><br><br>
 			<% end %>
 			<input type="submit" value="Submit">
@@ -24,7 +25,7 @@
 	<input type="text" name="trip" maxlength="64"/><br>
 	<br>
 	<textarea name="body" maxlength="2000"></textarea><br><br>
-	<% if not require("utils.luna-config").boardinfo[sboard].noimg then %>
+	<% if not cfg.boardinfo[sboard].noimg then %>
 		<input type="file" name="picture"><br><br>
 	<% end %>
 	<input type="submit" value="Submit">
