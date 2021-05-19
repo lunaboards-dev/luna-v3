@@ -25,10 +25,11 @@
 				end %>
 				<span class="image-header">Original image: <a href="<%= file -%>"><%= shortoriginal -%></a> (<%= require("utils").machine_to_human(require("utils.files").getsize(post.picture)) -%>)</span><br>
 				<% if mime:sub(1, 6) == "image/" then %>
-					<a href="https://saucenao.com/search.php?url=<%= require("utils.luna-config").luna.url .. file -%>" target="_blank">Saucenao</a>
-					<a href="https://images.google.com/searchbyimage?image_url=<%= require("utils.luna-config").luna.url .. file -%>" target="_blank">RGIS</a>
+					Reverse search:
+					[<a href="https://saucenao.com/search.php?url=<%= require("utils.luna-config").luna.url .. file -%>" target="_blank">Saucenao</a>]
+					[<a href="https://images.google.com/searchbyimage?image_url=<%= require("utils.luna-config").luna.url .. file -%>" target="_blank">RGIS</a>]
 					<% local pxid = post.original_name:match("^(%d+)_p%d+%..+$") if pxid then %>
-						<a href="https://www.pixiv.net/en/artworks/<%= pxid -%>" target="_blank">Pixiv</a>
+						[<a href="https://www.pixiv.net/en/artworks/<%= pxid -%>" target="_blank">Pixiv</a>]
 					<% end %>
 				<% end %>
 			<% end %>
