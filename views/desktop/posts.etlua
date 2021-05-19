@@ -19,9 +19,10 @@
 			<span class="post-header">ID: <%= post.id -%> Date: <%= post.created_at -%> <%if post.admin then%><span class="glow" style="color: <%= require("utils.admins").getcolor(post.admin) -%>"><%= require("utils.admins").getdisplayname(post.admin) -%> </span><%end%><span style="color: #<%= (post.trip:match("!(.+)") or post.trip):sub(1, 6) -%>"><%= post.trip -%></span></span><br>
 			<% if post.picture then %>
 				<% local file, thumb, ext, mime = require("utils.files").getnames(post.picture) %>
-				<% local shortoriginal = post.original_name:sub(1, 32)
-				if (shortoriginal ~= post.original_name) then
-					shortoriginal = shortoriginal .. "..." .. post.original_name:sub(#post.original_name-8)
+				<% local shortoriginal
+				if (#post.original_name > 48) then
+					shortoriginal = post.original_name:sub(1, 32) .. "..." .. post.original_name:sub(#post.original_name-8)
+					if ()
 				end %>
 				<span class="image-header">Original image: <a href="<%= file -%>"><%= shortoriginal -%></a> (<%= require("utils").machine_to_human(require("utils.files").getsize(post.picture)) -%>)</span><br>
 				<% if mime:sub(1, 6) == "image/" then %>
