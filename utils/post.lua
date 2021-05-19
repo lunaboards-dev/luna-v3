@@ -9,7 +9,7 @@ local formatters = {
 			while not post do
 				pcall(function()
 					post = models.post:find(tonumber(id))
-				end
+				end)
 			end
 			if post then
 				if (post.board == src.board and post.thread == src.thread) then
