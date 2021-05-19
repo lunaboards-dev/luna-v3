@@ -39,7 +39,7 @@
 				   <a href="<%= file -%>"><img src="<%= file -%>" class="userimg" align="top" /></a>
 			   <% else %>
 				   <a href="<%= file -%>"><img src="<%= thumb -%>" class="userimg" align="top" /></a>
-			   <% end end %>| <%- require("utils.post").format(post.content) -%></p>
+			   <% end end %>| <%- require("utils.post").format(post.content, post) -%></p>
 		</div>
 	<% end %>
 <% end %>
