@@ -3,14 +3,9 @@ local models = require("models")
 local db = require("lapis.db")
 
 local formatters = {
-	--[[function(line, src)
+	function(line, src)
 		return line:gsub(">>(%d+)", function(id)
-			local post
-			while not post do
-				pcall(function()
-					post = models.post:find(tonumber(id)) -- WHY DOES THIS ALWAYS FAIL
-				end)
-			end
+			local post = models.post:find(tonumber(id))
 			if post then
 				if (post.board == src.board and post.thread == src.thread) then
 					return "<a class=\"quote glow\" href=\"#post_"..id.."\">&gt;&gt;"..id.."</a>"
@@ -21,7 +16,7 @@ local formatters = {
 			end
 			return "&gt;&gt;"..id
 		end)
-	end,]]
+	end,
 	function(line, src)
 		if line:sub(1, 1) == ">" then
 			return '<span class="quote glow">&gt;'..line:sub(2):gsub("^%s", "")..'</span>'
