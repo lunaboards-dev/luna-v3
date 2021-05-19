@@ -2,36 +2,36 @@ local post = {}
 local models = require("models")
 local db = require("lapis.db")
 
-local formatters = {
-	function(line, src)
-		return line:gsub(">>(%d+)", function(id)
-			local post = models.post:find(tonumber(id))
-			if post then
-				if (post.board == src.board and post.thread == src.thread) then
-					return "<a class=\"quote glow\" href=\"#post_"..id.."\">&gt;&gt;"..id.."</a>"
-				elseif (post.board == src.board) then
-					return "<a class=\"quote glow\" href=\"/"..post.board.."/"..post.thread.."#post_"..id.."\">&gt;&gt;"..post.thread.."#"..id.."</a>"
-				end
-				return "<a class=\"quote glow\" href=\"/"..post.board.."/"..post.thread.."#post_"..id.."\">&gt;&gt;/"..post.board.."/"..post.thread.."#"..id.."</a>"
-			end
-			return "&gt;&gt;"..id
-		end)
-	end,
-	function(line, src)
-		if line:sub(1, 1) == ">" then
-			return '<span class="quote glow">&gt;'..line:sub(2):gsub("^%s", "")..'</span>'
-		end
-		return line
-	end,
-	function(line, src)
-		return line.."<br>"
-	end,
-	function(line, src)
-		return line:gsub("\1", "")
-	end
-}
-
 function post.format(post, src)
+	local formatters = { -- GAH FUCKING AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+		function(line, src)
+			return line:gsub(">>(%d+)", function(id)
+				local post = models.post:find(tonumber(id))
+				if post then
+					if (post.board == src.board and post.thread == src.thread) then
+						return "<a class=\"quote glow\" href=\"#post_"..id.."\">&gt;&gt;"..id.."</a>"
+					elseif (post.board == src.board) then
+						return "<a class=\"quote glow\" href=\"/"..post.board.."/"..post.thread.."#post_"..id.."\">&gt;&gt;"..post.thread.."#"..id.."</a>"
+					end
+					return "<a class=\"quote glow\" href=\"/"..post.board.."/"..post.thread.."#post_"..id.."\">&gt;&gt;/"..post.board.."/"..post.thread.."#"..id.."</a>"
+				end
+				return "&gt;&gt;"..id
+			end)
+		end,
+		function(line, src)
+			if line:sub(1, 1) == ">" then
+				return '<span class="quote glow">&gt;'..line:sub(2):gsub("^%s", "")..'</span>'
+			end
+			return line
+		end,
+		function(line, src)
+			return line.."<br>"
+		end,
+		function(line, src)
+			return line:gsub("\1", "")
+		end
+	}
+
 	if (post:sub(#post) ~= "\n") then post = post .. "\n" end
 	local s = ""
 	for line in post:gmatch("[^\n]+") do
