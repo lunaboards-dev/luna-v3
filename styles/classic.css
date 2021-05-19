@@ -4,7 +4,7 @@ body {
 }
 
 .quote {
-	color: $d;
+	color: $d !important;
 }
 
 a {
