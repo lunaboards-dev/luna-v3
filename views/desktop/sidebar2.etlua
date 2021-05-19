@@ -14,7 +14,7 @@
 			<input type="hidden" value="<%= sboard -%>" name="board">
 		</form>
 	<% end %>
-<% elseif sboard then %>
+<% elseif sboard and sboard ~= "all" then %>
 <form method="post" enctype="multipart/form-data" action="/<%=sboard-%>/new">
 	<label for="title">title</label><br>
 	<input type="text" name="title" maxlength="32" /><br>
