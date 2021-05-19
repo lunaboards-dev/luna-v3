@@ -22,7 +22,7 @@
 				<span class="image-header">Original image: <a href="<%= file -%>"><%= post.original_name -%></a> (<%= require("utils").machine_to_human(require("utils.files").getsize(post.picture)) -%>)</span><br>
 				<a href="https://saucenao.com/search.php?url=<%= require("utils.luna-config").luna.url .. file -%>">Saucenao</a>
 				<a href="https://images.google.com/searchbyimage?image_url=<%= require("utils.luna-config").luna.url .. file -%>">RGIS</a>
-				<% local pxid = post.original_name:match("^(%d+)_p%d+%%..+$") if pxid then %>
+				<% local pxid = post.original_name:match("^(%d+)_p%d+%..+$") if pxid then %>
 					<a href="https://www.pixiv.net/en/artworks/<%= pxid -%>">Pixiv</a>
 				<% end %>
 			<% end %>
