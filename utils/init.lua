@@ -21,6 +21,7 @@ function utils.reqwrap(func)
 		req.boards = config.luna.boards
 		req.boardinfo = config.boardinfo
 		req.user = {theme = "classic"}
+		req.cfg = config
 		local ret = func(...)
 		ret.headers = ret.headers or {}
 		for k, v in pairs(req.headers) do

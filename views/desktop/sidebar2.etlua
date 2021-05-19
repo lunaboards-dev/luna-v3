@@ -1,5 +1,4 @@
-<% local cfg = require("utils.luna-config")
-   if thread then %>
+<% if thread then %>
 	<% if api.ismarked(sboard, thread.id) then %>
 		<span style="lockedtext">Thread is marked for deletion.</span>
 	<% elseif api.islocked(sboard, thread.id) then %>
