@@ -20,8 +20,8 @@
 			<% if post.picture then %>
 				<% local file, thumb, ext, mime = require("utils.files").getnames(post.picture) %>
 				<% local shortoriginal = post.original_name:sub(1, 32)
-				if (#shortoriginal ~= post.original_name) then
-					shortoriginal = "..." .. post.original_name:sub(#post.original_name-8)
+				if (shortoriginal ~= post.original_name) then
+					shortoriginal = shortoriginal .. "..." .. post.original_name:sub(#post.original_name-8)
 				end %>
 				<span class="image-header">Original image: <a href="<%= file -%>"><%= shortoriginal -%></a> (<%= require("utils").machine_to_human(require("utils.files").getsize(post.picture)) -%>)</span><br>
 				<% if mime:sub(1, 6) == "image/" then %>
