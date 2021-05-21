@@ -1,5 +1,5 @@
 Configuration
-<form action="post">
+<form method="post">
 	<input class="config" type="checkbox" <%= user.js_enabled and "checked" or "" %> name="js_enabled" />
 	<label for="js_enabled">Enable JavaScript</label><br>
 	Theme:
