@@ -1,6 +1,6 @@
 Configuration
 <form method="post">
-	<input class="config" type="checkbox" <%= user.js_enabled and "checked" or "" %> name="js_enabled" />
+	<input class="config" type="checkbox" <%= user.js and "checked" or "" %> name="js_enabled" />
 	<label for="js_enabled">Enable JavaScript</label><br>
 	Theme:
 	<select class="config" name="theme" value="<%= user.theme or "clasic" %>">
