@@ -33,13 +33,25 @@
 					<% end %>
 				<% end %>
 			<% end %>
-			<p><% if post.picture then %>
-				<% local file, thumb, ext, mime = require("utils.files").getnames(post.picture) %>
-				<% if (mime == "image/gif") then %>
-				   <a href="<%= file -%>"><img src="<%= file -%>" class="userimg" align="top" /></a>
-			   <% else %>
-				   <a href="<%= file -%>"><img src="<%= thumb -%>" class="userimg" align="top" /></a>
-			   <% end end %>| <%- require("utils.post").format(post.content, post) -%></p>
+			<div class="post-content">
+				<div class="userdata">
+					<% if post.picture then %>
+					<% local file, thumb, ext, mime = require("utils.files").getnames(post.picture) %>
+					<% if (mime == "image/gif") then %>
+					   <a href="<%= file -%>"><img src="<%= file -%>" class="userimg" align="top" /></a>
+				   <% else %>
+					   <a href="<%= file -%>"><img src="<%= thumb -%>" class="userimg" align="top" /></a>
+				   <% end end %>
+			   	</div>
+				<span class="post-text">| <%- require("utils.post").format(post.content, post) -%></span>
+			</div>
+		</div>
+		<div style="hidden" id="replies_container">
+			<% --[[for _, reply in pairs(replies) do %>
+				<div class="reply_preview" id="reply_post_<%= reply.id %>">
+
+				</div>
+			<% end]] %>
 		</div>
 	<% end %>
 <% end %>

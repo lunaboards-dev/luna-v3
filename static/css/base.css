@@ -120,6 +120,20 @@ input, textarea {
 	width: 100%;
 }
 
+.userdata {
+	float: left;
+	padding-right: 8px;
+	display: inline-block;
+}
+
+.post-content {
+	padding: 16px 0px;
+}
+
+.post-container {
+	clear: both;
+}
+
 .userimg {
 	max-width: 20vw;
 	max-width: 20vh;
