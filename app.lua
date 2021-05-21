@@ -1,3 +1,4 @@
+local date = require("date")
 local lapis = require("lapis")
 local app = lapis.Application()
 local config = require("utils.luna-config")
@@ -7,6 +8,10 @@ app:enable("etlua")
 api = require("api.init")
 app.layout = require("views.desktop.main")
 math.randomseed(os.time())
+app.cookie_attributes = function(self)
+  local expires = date(true):adddays(365):fmt("${http}")
+  return "Expires=" .. expires .. "; Path=/; HttpOnly"
+end
 
 --[[local db = require("lapis.db")
 app:before_filter(function()
@@ -26,7 +31,7 @@ end)]]
 app:before_filter(utils.handlemessage)
 app:before_filter(admins.authfilter)
 app:before_filter(function(req)
-	req.ip = req.req.headers["X-Forwarded-For"] or req.headers["X-Real-IP"] or req.req.remote_addr
+	req.ip = req.req.headers["X-Forwarded-For"] or req.req.headers["X-Real-IP"] or req.req.remote_addr
 	req.headers = {}
 	req.headers["Access-Control-Allow-Origin"] = "*" -- fucking CORS
 end)
