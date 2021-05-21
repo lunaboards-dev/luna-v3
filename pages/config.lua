@@ -6,7 +6,7 @@ return respond_to {
 	end,
 	POST = function(req)
 		req.session.user.js = req.params.js_enabled == "on"
-		req.session.user.js = req.params.theme
+		req.session.user.theme = req.params.theme
 		return {render = "desktop.config"}
 	end
 }
