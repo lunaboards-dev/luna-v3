@@ -2,6 +2,7 @@ local date = require("date")
 local lapis = require("lapis")
 local app = lapis.Application()
 local config = require("utils.luna-config")
+local settings = require("utils.user-settings")
 local utils = require("utils")
 local admins = require("utils.admins")
 app:enable("etlua")
@@ -30,6 +31,8 @@ end)]]
 
 app:before_filter(utils.handlemessage)
 app:before_filter(admins.authfilter)
+app:before_filter(settings.load)
+
 app:before_filter(function(req)
 	req.ip = req.req.headers["X-Forwarded-For"] or req.req.headers["X-Real-IP"] or req.req.remote_addr
 	req.headers = {}
