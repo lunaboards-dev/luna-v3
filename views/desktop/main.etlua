@@ -27,6 +27,9 @@
         <link rel="icon" type="image/png" href="/static/moooon.png" />
         <link rel="stylesheet" type="text/css" href="/static/css/base.css" />
         <link rel="stylesheet" type="text/css" href="/themes/<%= user.theme or "classic" -%>.css" />
+        <% if user.js then %>
+            <script src="/static/site.js"></script>
+        <% end %>
     </head>
     <body>
         <table id="container">

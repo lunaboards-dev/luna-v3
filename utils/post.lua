@@ -69,6 +69,18 @@ function post.format(post, src)
 		end
 		s = s .. line
 	end
+
+	-- Get replies to this post
+	local repls = models.post:select("where content like ?", "%>>"..src.id.."%")
+	local real_repls = {}
+	for i=1, #repls do
+		local ms, me = repls[i].content:find(">>"..src.id)
+		local sub = repls[i].content:sub(ms, me+1)
+		if (sub == ">>"..src.id.." " or sub == ">>"..src.id) then
+			real_repls[#real_repls+1] = repls[i]
+		end
+	end
+	src.replies = real_repls
 	return s
 end
 

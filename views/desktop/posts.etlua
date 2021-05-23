@@ -43,13 +43,28 @@
 					   <a href="<%= file -%>"><img src="<%= thumb -%>" class="userimg" align="top" /></a>
 				   <% end end %>
 			   	</div>
-				<span class="post-text">| <%- require("utils.post").format(post.content, post) -%></span>
+				<span class="post-text">| <%- require("utils.post").format(post.content, post) -%></span><br>
+				<% if #post.replies > 0 then %>
+					Replies:
+					<% for i=1, #post.replies do local reply = post.replies[i] %>
+						<% if reply.board == post.board and reply.thread == post.thread then %>
+							<a class="glow quote" href="#post_<%= reply.id %>">&gt;&gt;<%= reply.id %></a>
+						<% elseif reply.board == post.board then %>
+							<a class="glow quote" href="/<%= reply.board .. "/" .. reply.thread .. "#post_" .. reply.id %>">&gt;&gt;<%= reply.thread %>#<%= reply.id %></a>
+						<% else %>
+							<a class="glow quote" href="/<%= reply.board .. "/" .. reply.thread .. "#post_" .. reply.id %>">&gt;&gt;/<%= reply.board %>/<%= reply.thread %>#<%= reply.id %></a>
+						<% end %>
+					<%end%>
+				<% end %>
 			</div>
 		</div>
 		<div style="hidden" id="replies_container">
 			<% --[[for _, reply in pairs(replies) do %>
 				<div class="reply_preview" id="reply_post_<%= reply.id %>">
-
+					<% if reply.picture and reply.picture ~= "" then %>
+						<x-picref uuid="<%= reply.picture %>" />
+						<div name="img"></img>
+					<% end %>
 				</div>
 			<% end]] %>
 		</div>
