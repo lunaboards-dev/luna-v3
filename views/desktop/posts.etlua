@@ -43,9 +43,9 @@
 					   <a href="<%= file -%>"><img src="<%= thumb -%>" class="userimg" align="top" /></a>
 				   <% end end %>
 			   	</div>
-				<span class="post-text">| <%- require("utils.post").format(post.content, post) -%></span><br>
+				<span class="post-text">| <%- require("utils.post").format(post.content, post) -%></span>
 				<% if #post.replies > 0 then %>
-					Replies:
+					<br>Replies:
 					<% for i=1, #post.replies do local reply = post.replies[i] %>
 						<% if reply.board == post.board and reply.thread == post.thread then %>
 							<a class="glow quote" href="#post_<%= reply.id %>">&gt;&gt;<%= reply.id %></a>

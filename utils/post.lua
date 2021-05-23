@@ -76,7 +76,7 @@ function post.format(post, src)
 	for i=1, #repls do
 		local ms, me = repls[i].content:find(">>"..src.id)
 		local sub = repls[i].content:sub(ms, me+1)
-		if (sub == ">>"..src.id.." " or sub == ">>"..src.id) then
+		if (sub:match(">>"..src.id.."%w") or sub == ">>"..src.id) then
 			real_repls[#real_repls+1] = repls[i]
 		end
 	end
