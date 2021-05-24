@@ -3,7 +3,7 @@ This gets all the threads on a board. It returns an array.
 
 ## Arguments
 | Name | Example | Info |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | `board` | `l` | The board ID to get thread listing from. Optional. Defaults to `all` |
 
 ## Thread Info Structure
