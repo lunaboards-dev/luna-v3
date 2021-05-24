@@ -1,4 +1,4 @@
-<a href="/" class="sidebar-board">luna <%= _ENGINE.engine.nice_version %></a><br>
+<a href="/" class="sidebar-board" id="linkroot">luna <%= _ENGINE.engine.nice_version %></a><br>
 <% for i=1, #boards do local board = boards[i] %>
 	<% local blistc = "├" if i == #boards then blistc = "└" end %>
 	<% if user.js_enabled then %>

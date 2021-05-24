@@ -6,7 +6,7 @@
 	<% else %>
 		<form method="post" enctype="multipart/form-data" action="/<%=sboard-%>/<%=sthreadid-%>">
 			<label for="trip">trip</label><br>
-			<input type="text" name="trip" maxlength="64"/><br>
+			<input type="text" name="trip" maxlength="64" accesskey="p"/><br>
 			<br>
 			<textarea name="body" maxlength="2000"></textarea><br><br>
 			<% if not cfg.boardinfo[sboard].noimg then %>
@@ -19,7 +19,7 @@
 <% elseif sboard and sboard ~= "all" then %>
 <form method="post" enctype="multipart/form-data" action="/<%=sboard-%>/new">
 	<label for="title">title</label><br>
-	<input type="text" name="title" maxlength="32" /><br>
+	<input type="text" name="title" maxlength="32" accesskey="p"/><br>
 	<label for="trip">trip</label><br>
 	<input type="text" name="trip" maxlength="64"/><br>
 	<br>

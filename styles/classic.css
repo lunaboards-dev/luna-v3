@@ -49,3 +49,21 @@ input, textarea, ::file-selector-button, select, option {
 .success {
 	color: $a;
 }
+
+.post-container:target {
+	border-top-color: $7;
+	border-bottom-color: $7;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+}
+
+.post-container:focus {
+	border-top-color: $8;
+	border-bottom-color: $8;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+}
