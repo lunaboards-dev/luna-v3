@@ -32,6 +32,7 @@ return function(req)
 			date = op.created_at,
 			content = op.content,
 			picture = op.picture,
+			original_name = op.original_name,
 			ip = (req.admin and api.checkperms(req.admin, req.params.board, api.flags.perm_viewip)) and op.ip or nil
 		}
 		ret[i] = tobj

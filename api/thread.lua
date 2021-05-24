@@ -73,7 +73,39 @@ function api.deletepost(id)
 end
 
 function api.getposts(board, thread)
-	return models.post:select("where board = ? and thread = ? order by id asc, updated_at desc", board, thread)
+	local posts = models.post:select("where board = ? and thread = ? order by id asc, updated_at desc", board, thread)
+	for j=1, #posts do
+		local src = posts[j]
+		-- Get replies in post
+		local replies_to = {}
+		local st, en = 0, 0
+		repeat
+			st, en = src.content:find(">>%d+", en+1)
+			if (st) then
+				local stid = src.content:sub(st+2, en)
+				local id = assert(tonumber(stid), stid)
+				local rep = models.post:select("where id = ?", id)[1]
+				if rep then
+					table.insert(replies_to, rep)
+				end
+			end
+		until not st
+		table.sort(replies_to, function(a, b) return a.id < b.id end)
+		src.replies_to = replies_to
+
+		-- Get replies to this post
+		local repls = models.post:select("where content like ? order by id asc", "%>>"..src.id.."%")
+		local real_repls = {}
+		for i=1, #repls do
+			local ms, me = repls[i].content:find(">>"..src.id)
+			local sub = repls[i].content:sub(ms, me+1)
+			if (sub == ">>"..src.id.." " or sub == ">>"..src.id.."\n" or sub == ">>"..src.id.."\r" or sub == ">>"..src.id) then
+				real_repls[#real_repls+1] = repls[i]
+			end
+		end
+		src.replies = real_repls
+	end
+	return posts
 end
 
 function api.islocked(board, thread)

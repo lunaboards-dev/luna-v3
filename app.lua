@@ -53,12 +53,13 @@ app:get("themes", "/themes/:theme", require("pages.themes"))
 app:get("api_v0_boards", "/api/v0/boards", utils.reqwrap(require("api.endpoints.v0.boards")))
 app:get("api_v0_files", "/api/v0/files", utils.reqwrap(require("api.endpoints.v0.pictures")))
 app:get("api_v0_threads", "/api/v0/threads", utils.reqwrap(require("api.endpoints.v0.threads")))
+app:get("api_v0_posts", "/api/v0/posts", utils.reqwrap(require("api.endpoints.v0.posts")))
 app:get("api_vichan_boards", "/boards.json", utils.reqwrap(utils.reqwrap(require("api.endpoints.vichan.boards"))))
 
-function app:handle_404()
+app.handle_404 = utils.reqwrap(function(self)
 	self.path = self.req.parsed_url.path
 	return {render = "desktop.404", status = 404}
-end
+end)
 
 function app:handle_error(err, trace)
 	if (self.original_request.route_name:sub(1, 4) == "api_") then
