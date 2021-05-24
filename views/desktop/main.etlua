@@ -30,6 +30,20 @@
         <% if user.js then %>
             <script src="/static/site.js"></script>
         <% end %>
+        <% if user.glow == "none" or user.glow == "all" then %>
+            <style>
+                .glow {
+                    filter: none;
+                }
+            </style>
+        <% end %>
+        <% if user.glow == "all" then %>
+            <style>
+                body {
+                    filter: url("/static/filter.svg#svgGlowS");
+                }
+            </style>
+        <% end %>
     </head>
     <body>
         <table id="container">

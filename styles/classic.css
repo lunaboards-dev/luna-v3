@@ -1,32 +1,42 @@
 body {
 	background-color: $0;
+	--bg-color: $0;
 	color: $7;
+	--fg-color: $7;
 }
 
 .quote {
 	color: $d !important;
+	--fg-color: $d !important;
 }
 
 a {
 	color: $7;
+	--fg-color: $7;
 }
 
 a:visited {
 	color: $7;
+	--fg-color: $7;
 }
 
 .title {
 	color: $f;
+	--fg-color: $f;
 }
 
 .selected {
 	color: $0 !important; /* fuck off css */
+	--fg-color: $0 !important;
 	background-color: $7;
+	--bg-color: $7;
 }
 
 input, textarea, ::file-selector-button, select, option {
 	background-color: $7;
+	--bg-color: $7;
 	color: $0;
+	--fg-color: $0;
 }
 
 .contentsupercontainer {
@@ -36,18 +46,22 @@ input, textarea, ::file-selector-button, select, option {
 
 .locked, .allboard {
 	color: $8 !important;
+	--fg-color: $8 !important;
 }
 
 .marked {
 	color: $1 !important;
+	--fg-color: $1 !important;
 }
 
 .error {
 	color: $9;
+	--fg-color: $9;
 }
 
 .success {
 	color: $a;
+	--fg-color: $a;
 }
 
 .post-container:target {
@@ -66,4 +80,17 @@ input, textarea, ::file-selector-button, select, option {
 	border-bottom-style: solid;
 	border-top-width: 1px;
 	border-bottom-width: 1px;
+}
+
+input:focus, textarea:focus {
+	outline: 1px solid $e;
+	background-color: $f;
+	padding: -1px;
+	--bg-color: $f;
+}
+
+::selection {
+	filter: none;
+	color: var(--bg-color);
+	background-color: var(--fg-color);
 }

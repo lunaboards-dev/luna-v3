@@ -7,5 +7,17 @@ Configuration
 		<option value="classic">Classic Luna theme</option>
 	</select>
 	<br>
+	Glow:<br>
+	<input type="radio" name="glow" value="none" id="none" class="config" <%= user.glow == "none" and "checked" or "" %> />
+	<label for="none">None</label><br>
+	<input type="radio" name="glow" value="quote" id="quote" class="config" <%= user.glow == "quote" and "checked" or "" %> />
+	<label for="quote">Quote</label><br>
+	<input type="radio" name="glow" value="all" id="all" class="config" <%= user.glow == "all" and "checked" or "" %> />
+	<% if user.glow == "all" then %>
+		<label for="all"><b><i>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA MY EYES</i></b></label><br>
+	<% else %>
+		<label for="all">All (why would you do this?)</label><br>
+	<% end %>
+
 	<input class="config" type="submit" value="Submit">
 </form>

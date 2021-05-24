@@ -20,7 +20,15 @@ function utils.reqwrap(func)
 		--req.inner = "Welcome to Lapis " .. require("lapis.version")
 		req.boards = config.luna.boards
 		req.boardinfo = config.boardinfo
-		req.user = {theme = "classic"}
+		req.user = req.session.user
+		if not req.user then
+			req.session.user = {
+				theme = "classic",
+				glow = "quote",
+				js = false
+			}
+			req.user = req.session.user
+		end
 		req.cfg = config
 		local ret = func(...)
 		ret.headers = ret.headers or {}
