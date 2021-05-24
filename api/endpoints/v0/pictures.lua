@@ -3,7 +3,7 @@ local config = require("utils.luna-config")
 local models = require("models")
 return function(req)
 	if (req.params.hash) then
-		local pictures = models.fileref:select("where blake2 = ?", hash)
+		local pictures = models.fileref:select("where blake2 = ?", req.params.hash)
 		local retobj = {}
 		for i=1, #pictures do
 			local pic = pictures[i]
