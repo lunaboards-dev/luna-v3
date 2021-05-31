@@ -6,6 +6,7 @@ function post.format(post, src)
 	local formatters = { -- GAH FUCKING AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 		function(line, src)
 			return line:gsub("\1", "")
+		end,
 		function(line, src)
 			local nline = ""
 			local st, en = 0, 0
