@@ -5,6 +5,8 @@ local db = require("lapis.db")
 function post.format(post, src)
 	local formatters = { -- GAH FUCKING AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 		function(line, src)
+			return line:gsub("\1", "")
+		function(line, src)
 			local nline = ""
 			local st, en = 0, 0
 			local oen = 0
@@ -18,11 +20,11 @@ function post.format(post, src)
 						local post = models.post:select("where id = ?", tonumber(id))[1]
 						if post then
 							if (post.board == src.board and post.thread == src.thread) then
-								nline = nline .. "<a class=\"quote glow\" href=\"#post_"..id.."\">&gt;&gt;"..id.."</a>"
+								nline = nline .. "<\1a class=\"quote glow\" href=\"#post_"..id.."\"\1>&gt;&gt;"..id.."<\1/a\1>"
 							elseif (post.board == src.board) then
-								nline = nline ..  "<a class=\"quote glow\" href=\"/"..post.board.."/"..post.thread.."#post_"..id.."\">&gt;&gt;"..post.thread.."#"..id.."</a>"
+								nline = nline ..  "<\1a class=\"quote glow\" href=\"/"..post.board.."/"..post.thread.."#post_"..id.."\"\1>&gt;&gt;"..post.thread.."#"..id.."<\1/a\1>"
 							else
-								nline = nline ..  "<a class=\"quote glow\" href=\"/"..post.board.."/"..post.thread.."#post_"..id.."\">&gt;&gt;/"..post.board.."/"..post.thread.."#"..id.."</a>"
+								nline = nline ..  "<\1a class=\"quote glow\" href=\"/"..post.board.."/"..post.thread.."#post_"..id.."\"\1>&gt;&gt;/"..post.board.."/"..post.thread.."#"..id.."<\1/a\1>"
 							end
 						else
 							nline = nline .. "&gt;&gt;"..id
@@ -49,12 +51,30 @@ function post.format(post, src)
 		end,
 		function(line, src)
 			if line:sub(1, 1) == ">" then
-				return '<span class="quote glow">&gt;'..line:sub(2):gsub("^%s", "")..'</span>'
+				return '<\1span class="quote glow"\1>&gt;'..line:sub(2):gsub("^%s", "")..'<\1/span\1>'
 			end
 			return line
 		end,
 		function(line, src)
-			return line.."<br>"
+			return line.."<\1br\1>"
+		end,
+		function(line, src)
+			if (src.admin and api.checkperms(src.admin, src.board, api.flags.perm_html)) then
+				return line
+			end
+			return line:gsub("<\1?", function(match)
+				if match:sub(2,2) == "\1" then
+					return "<"
+				else
+					return "&lt;"
+				end
+			end):gsub("\1?>", function(match)
+				if match:sub(1,1) == "\1" then
+					return ">"
+				else
+					return "&gt;"
+				end
+			end)
 		end,
 		function(line, src)
 			return line:gsub("\1", "")
